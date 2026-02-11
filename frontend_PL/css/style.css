@@ -1,0 +1,107 @@
+:root {
+    --primary-color:#6b5c8f;
+    --primary-hover: #5d4f7c;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+}
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+/* LOGIN-PAGE*/
+
+.login-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.login-card h1 {
+    margin-top: 0;
+}
+.login-card form {
+    display: flex;
+    flex-direction: column;
+}
+.login-card input {
+    margin-bottom: 15px;
+    padding: 8px;
+}
+.login-card input:focus {
+    outline: none;
+    border: 1px solid var(--primary-color);
+}
+.login-card button {
+    padding: 10px;
+    cursor: pointer;
+}
+.logo-pixie {
+    font-family: 'Pacifico', cursive;
+    color: #6b5c8f;
+}
+.logo-lern {
+    font-family: Arial, sens-serif;
+    font-weight: 600;
+}
+.login-card h2 {
+    font-weight: 500;
+    color: #444;
+}
+.login-card button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+}
+.login-card button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* DASHBOARD-PAGE */
+
+.dashboard-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.progress-section {
+    margin: 20px 0;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* TOPICS */
+
+.topics-section {
+    margin-top: 20px;
+}
+.topic-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.topic-item label {
+    cursor: pointer;
+}
+.topic-item input {
+    margin-right: 8px;
+}
