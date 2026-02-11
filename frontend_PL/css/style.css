@@ -16,6 +16,32 @@ body {
 
 /* LOGIN-PAGE*/
 
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.user-info {
+    font-size: 14px;
+    color: #555;
+}
+.logout-btn {
+    background-color: #6b5c8f;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.logout-btn:hover {
+    background-color: #5a4d7a;
+    color: white;
+}
+.logout-btn:active {
+    transform: scale(0.97);
+}
 .login-card {
     background: white;
     padding: 30px;
@@ -72,6 +98,9 @@ body {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(15px);
 }
 .progress-section {
     margin: 20px 0;
@@ -104,4 +133,13 @@ body {
 }
 .topic-item input {
     margin-right: 8px;
+}
+
+/* Animation */
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

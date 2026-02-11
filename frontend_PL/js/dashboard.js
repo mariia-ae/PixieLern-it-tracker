@@ -23,3 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.querySelector('.logout-btn')
+    .addEventListener('click', function() {
+        alert("Logout funktiomiert später mit Backend");
+    });
