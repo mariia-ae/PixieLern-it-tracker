@@ -1,36 +1,146 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => { 
 
-    console.log("JS loaded");
+    const logoutBtn = document.querySelector(".logout-btn");
 
-    const checkboxes = document.querySelectorAll('.topic-item input');
-    console.log("Checkbox count", checkboxes.length);
-    const progressText = document.querySelector('.progress-section p');
-    const progressFill = document.querySelector('.progress-fill');
-
-    function updateProgress() {
-        const total = checkboxes.length;
-        const checked = document.querySelectorAll('.topic-item input:checked').length;
-
-        const percent = Math.round((checked / total) * 100);
-        progressText.textContent = `Fortschritt: ${percent}%`;
-        progressFill.style.width = percent + "%";
-    }
-
-    checkboxes.forEach(box => {
-
-        box.addEventListener('change', updateProgress);
-
-    });
-});
-
-document.querySelector('.logout-btn')
-    .addEventListener('click', function() {
+    logoutBtn.addEventListener('click', () => {
         alert("Logout funktiomiert später mit Backend");
     });
-
-document.addEventListener("DOMContentLoaded", () =>{
-
     const topicsContainer = document.querySelector(".topics-section");
+    const addBtn = document.querySelector("#addTopicBtn");
+    const input = document.querySelector("#newTopicInput");
+
+    function renderTopic(topic) {
+        const topicDiv = document.createElement("div");
+        topicDiv.classList.add("topic-item");
+
+        topicDiv.innerHTML = `
+            <label>
+                <input type="checkbox" ${topic.completed ? "checked": ""}>
+                <span class="topic-text">${topic.name}</span>
+            </label>
+            <div class="topic-actions">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">X</button>
+            </div>
+        `;
+
+        topicsContainer.appendChild(topicDiv);
+
+        const checkbox = topicDiv.querySelector("input");
+        checkbox.addEventListener("change", () => {
+            fetch(`http://localhost:3000/topics/${topic.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    completed: checkbox.checked ? 1 : 0
+                })
+            }).then(() =>  {
+                updateProgress();
+                sortTopics();
+            });
+        });
+
+        const editBtn = topicDiv.querySelector(".edit-btn");
+        const textSpan = topicDiv.querySelector(".topic-text");
+
+        editBtn.addEventListener("click", () => {
+
+            const textSpan = topicDiv.querySelector(".topic-text");
+            const originalText = textSpan.textContent;
+
+            const inputEdit = document.createElement("input");
+            inputEdit.type ="text";
+            inputEdit.value = originalText;
+            inputEdit.classList.add("edit-input");
+
+            textSpan.replaceWith(inputEdit);
+            editBtn.textContent = "Save";
+            inputEdit.focus();
+
+            function saveEdit() {
+                const newName = inputEdit.value.trim();
+                if (!newName) return;
+
+                fetch(`http://localhost:3000/topics/${topic.id}`, {
+                    method: "PUT",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({name: newName})
+                }).then(() => {
+                    const newSpan = document.createElement("span");
+                    newSpan.classList.add("topic-text");
+                    newSpan.textContent = newName;
+
+                    inputEdit.replaceWith(newSpan);
+                    editBtn.textContent = "Edit";
+                });
+            }
+            function cancelEdit() {
+                const originalSpan = document.createElement("span");
+                originalSpan.classList.add("topic-text");
+                originalSpan.textContent = originalText;
+
+                inputEdit.replaceWith(originalSpan);
+                editBtn.textContent ="Edit";
+            }
+
+            inputEdit.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") saveEdit();
+                if (e.key === "Escape") cancelEdit();
+            });
+
+            inputEdit.addEventListener("blur", saveEdit);
+            });
+
+        const deleteBtn = topicDiv.querySelector(".delete-btn");
+
+        deleteBtn.addEventListener("click", () => {
+
+            const confirmed = confirm("Möchtest du dieses Thema wirklich löschen)");
+
+            if (!confirmed) return;
+
+            fetch(`http://localhost:3000/topics/${topic.id}`, {
+                method: "DELETE"
+            }).then(() => {
+                topicDiv.remove();
+                updateProgress();
+            });
+        });
+    }
+
+    function loadTopics() {
+        fetch("http://localhost:3000/topics")
+            .then(res => res.json())
+            .then(data => {
+                topicsContainer.innerHTML = "";
+                data.forEach(topic => renderTopic(topic));
+                updateProgress();
+                sortTopics();
+            });
+    }
+
+    addBtn.addEventListener("click", () => {
+        const name = input.value.trim();
+
+        if (!name) return;
+
+        fetch("http://localhost:3000/topics", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({name})
+        })
+        .then(res => res.json())
+        .then(newTopic => {
+            
+            renderTopic(newTopic);
+            input.value ="";
+            updateProgress();
+        });
+    });
 
     function updateProgress() {
         const checkboxes = document.querySelectorAll(".topics-section input[type=checkbox]");
@@ -45,44 +155,21 @@ document.addEventListener("DOMContentLoaded", () =>{
         document.querySelector(".progress-fill").style.width = percent + "%";
     }
 
-    fetch("http://localhost:3000/topics")
-   .then(res => res.json())
-   .then(data => {
-     topicsContainer.innerHTML = "";
+    function sortTopics() {
+        const items = Array.from(topicsContainer.children);
 
-     data.forEach(topic => {
-        const topicDiv = document.createElement("div");
-        topicDiv.classList.add("topic-item");
+        items.sort((a, b) => {
+            const aChecked = a.querySelector("input").checked;
+            const bChecked = b.querySelector("input").checked;
 
-        topicDiv.innerHTML = `
-            <label>
-              <input type="checkbox" ${topic.completed ? "checked" : ""} >
-              ${topic.name}
-            </label>
-            `;
-            topicsContainer.appendChild(topicDiv);
+            return aChecked - bChecked;
+        });
 
-            const checkbox = topicDiv.querySelector("input");
-            checkbox.addEventListener("change", () => {
-                fetch(`http://localhost:3000/topics/${topic.id}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        completed: checkbox.checked ? 1 : 0
-                    })
-              })
-              .then(res => res.json())
-              .then(() => {
-                updateProgress();
-              });
-            });
+        items.forEach(item => topicsContainer.appendChild(item));
+    }
+     loadTopics();
      });
-     updateProgress();
-   });
-});
-
+    
 
 
 

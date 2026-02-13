@@ -135,6 +135,59 @@ body {
     margin-right: 8px;
 }
 
+/* */
+
+.add-topic-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+#newTopicInput {
+    flex: 1;
+    height: 44px;
+    padding:  0 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+#addTopicBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0px 20px;
+    height: 44px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#addTopicBtn:hover {
+    opacity: 0.9;
+}
+
+.topic-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topic-item label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.delete-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+}
+.delete-btn:hover {
+    color: red;
+}
+
+
 /* Animation */
 
 @keyframes fadeInUp {
