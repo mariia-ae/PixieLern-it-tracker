@@ -2,18 +2,39 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>PixieLern - Register</title>
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" 
+    rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="login-page">
+    <div class="container">
+        <div class="login-card">
+            <h1 class="logo">
+                <span class="logo-pixie">Pixie</span><span class="logo-lern">Lern</span>
+            </h1>
+            <h2>Registrierung</h2>
 
-    <h2>Register</h2>
+            <form>
+                <label>Username</label>
+                <input type="text" id="username" required><br><br>
 
-    <input id="username" placeholder="username"><br><br>
-    <input id="password" type="password" placeholder="password"><br><br>
+                <label>Password</label>
+                <input id="password" type="password" required><br><br>
 
-    <button onclick="register()"> Register</button>
-    <p id="result"></p>
+                <button type="button" onclick="register()">Registrierung</button>
+                <p id="result"></p>
+            </form>
+            
+            <p class="switch-page">
+            Bereits ein Konto?
+            <a href="login.html">Zum Login</a>
+            </p>
+        </div>
+    </div>
 
+    
 <script src="js/register.js" defer></script>
 </body>
 </html>

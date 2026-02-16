@@ -39,7 +39,7 @@ db.run(`
     name TEXT NOT NULL,
     completed INTEGER DEFAULT 0,
     user_id INTEGER,
-    difficalty TEXT DEFAULT 'easy',
+    difficulty TEXT DEFAULT 'easy',
     category TEXT DEFAULT 'General',
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
     )
@@ -77,7 +77,7 @@ app.post("/topics", (req, res) => {
         [name, user_id, difficulty || 'easy', category || 'General'],
         function (err) {
             if (err) {
-                return res.status(500),json({error: err.message});
+                return res.status(500).json({error: err.message});
             }
 
             res.json({

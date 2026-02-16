@@ -14,6 +14,13 @@ async function register() {
         })
     });
     const data = await res.json();
-
-    document.getElementById("result").innerText = data.message || data.error;
+    if (data.message) {
+        document.getElementById("result").innerText = "Registrierung erfolgreich! Weiterleitung zum Login...";
+        setImmediate(() => {
+            window.location.href="login.html";
+        }, 1500);
+    } else {
+        document.getElementById("result").innerText= data.error;
+        
+    }
 }

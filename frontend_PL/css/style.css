@@ -186,8 +186,51 @@ body {
 .delete-btn:hover {
     color: red;
 }
-
-
+.topic-difficulty {
+    margin-left: 10px;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color:white;
+    font-weight: 500;
+}
+.topic-difficulty.easy {
+    background-color: #7ebe80;
+}
+.topic-difficulty.medium {
+    background-color: #f3ae48;
+}
+.topic-difficulty.hard {
+    background-color: #f07066;
+}
+.topic-category {
+    margin-left: 8px;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    color: #444;
+    font-weight: 500;
+}
+#result {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #7ebe80;
+    font-weight: 500;
+}
+.switch-page {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+.switch-page a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: 500;
+}
+.switch-page a:hover{
+    text-decoration: underline;
+}
 /* Animation */
 
 @keyframes fadeInUp {

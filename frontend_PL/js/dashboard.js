@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => { 
 
+    const categorySelect = document.querySelector("#categorySelector");
     const userId = localStorage.getItem("userId");
     const username = localStorage.getItem("username");
     const usernameSpan = document.querySelector(".username");
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const topicsContainer = document.querySelector(".topics-section");
     const addBtn = document.querySelector("#addTopicBtn");
     const input = document.querySelector("#newTopicInput");
+    const difficultySelect = document.querySelector("#difficultySelect");
 
     function renderTopic(topic) {
         const topicDiv = document.createElement("div");
@@ -29,6 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <label>
                 <input type="checkbox" ${topic.completed ? "checked": ""}>
                 <span class="topic-text">${topic.name}</span>
+                <span class="topic-difficulty ${topic.difficulty || "easy"}">
+                    ${topic.difficulty || "easy"}
+                </span>
+                <spa class="topic-category ${topic.category}">
+                ${topic.category || "General"}
+                </span>
             </label>
             <div class="topic-actions">
                 <button class="edit-btn">Edit</button>
@@ -146,7 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             body: JSON.stringify({
                 name: name,
-                user_id: userId
+                user_id: userId,
+                difficulty: difficultySelect.value,
+                category: categorySelect.value
             })
         })
         .then(res => res.json())
