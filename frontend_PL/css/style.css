@@ -231,6 +231,7 @@ body {
 .switch-page a:hover{
     text-decoration: underline;
 }
+
 /* Animation */
 
 @keyframes fadeInUp {
