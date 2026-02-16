@@ -71,4 +71,9 @@ http://github.com/mariia-ae
 ____________________________________________________________________
 ## Screenshots
 ###  Login
+![Login](screenshots/login.png)
+### Registrierung
+![Register](screenshots/register.png)
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
