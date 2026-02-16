@@ -1,9 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => { 
 
+    const userId = localStorage.getItem("userId");
+    const username = localStorage.getItem("username");
+    const usernameSpan = document.querySelector(".username");
+
+    if (usernameSpan && username) {
+        usernameSpan.textContent = username
+    }
+
+    if (!userId) {
+    window.location.href ="login.html";
+    }
     const logoutBtn = document.querySelector(".logout-btn");
 
     logoutBtn.addEventListener('click', () => {
-        alert("Logout funktiomiert später mit Backend");
+        localStorage.removeItem("userId");
+        window.location.href = "login.html";
     });
     const topicsContainer = document.querySelector(".topics-section");
     const addBtn = document.querySelector("#addTopicBtn");
@@ -111,7 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function loadTopics() {
-        fetch("http://localhost:3000/topics")
+        const userId = localStorage.getItem("userId");
+        fetch(`http://localhost:3000/topics/${userId}`)
             .then(res => res.json())
             .then(data => {
                 topicsContainer.innerHTML = "";
@@ -131,7 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name})
+            body: JSON.stringify({
+                name: name,
+                user_id: userId
+            })
         })
         .then(res => res.json())
         .then(newTopic => {
@@ -169,7 +185,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
      loadTopics();
      });
-    
-
-
-

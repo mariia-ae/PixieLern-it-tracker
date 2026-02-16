@@ -1,7 +1,7 @@
 const sqlite3 = require("sqlite3").verbose();
-
 const express = require("express");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 
 const app = express();
 const PORT = 3000;
@@ -36,43 +36,23 @@ db.run(`
 db.run(`
     CREATE TABLE IF NOT EXISTS topics (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE,
-    completed INTEGER DEFAULT 0
+    name TEXT NOT NULL,
+    completed INTEGER DEFAULT 0,
+    user_id INTEGER,
+    difficalty TEXT DEFAULT 'easy',
+    category TEXT DEFAULT 'General',
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
     )
 `, (err) => {
     if (err) {
         console.error("Table creation error", err.message);
         return;
     } 
-    console.log("Table created successfully");
+    console.log("Topics created successfully");
 
-    const defaultTopics = [
-       "HTTP Grundlagen",
-       "REST API",
-       "SQL Grundlagen",
-       "JWT Authentication",
-       "CRUD Operations",
-       "MVC Architekture"
-    ];
-    defaultTopics.forEach(topic => {
-    db.run(
-        `INSERT  OR IGNORE INTO topics ( name, completed)
-        VALUES (?, 0)`,
-        [topic]
-    );
-   });
 });
 
 
-app.get ("/topics", (req, res) => {
-    db.all("SELECT * FROM topics", [], (err, rows) => {
-        if (err) {
-            res.status(500).json({error:err.message});
-        } else {
-            res.json(rows);
-        }
-    });
-});
 
 app.put("/topics/:id", (req, res) => {
     const {completed, name} = req.body;
@@ -90,15 +70,11 @@ app.put("/topics/:id", (req, res) => {
     );
 });
 app.post("/topics", (req, res) => {
-    const {name} = req.body;
-
-    if (!name || name.trim() === "") {
-        return res.status(400).json({error: "Name is required"});
-    }
+    const {name, user_id, difficulty, category} = req.body;
 
     db.run(
-        "INSERT INTO topics (name, completed) VALUES (?, 0)",
-        [name.trim()],
+        "INSERT INTO topics (name, completed, user_id, difficulty, category) VALUES (?, 0, ?, ?, ?)",
+        [name, user_id, difficulty || 'easy', category || 'General'],
         function (err) {
             if (err) {
                 return res.status(500),json({error: err.message});
@@ -106,8 +82,10 @@ app.post("/topics", (req, res) => {
 
             res.json({
                 id: this.lastID,
-                name: name.trim(),
-                completed: 0
+                name: name,
+                completed: 0,
+                difficulty: difficulty || 'easy',
+                category: category || 'General'
             });
         }
     );
@@ -129,24 +107,96 @@ app.delete("/topics/:id", (req, res) => {
     );
 });
 
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
     const { username, password } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).json({error: "Username and password required"});
-    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     db.run(
+
         "INSERT INTO users (username, password) VALUES (?, ?)",
-        [username.trim(), password],
+        [username, hashedPassword],
+
         function(err) {
             if (err) {
-                return res.status(400).json({error: err.message});
+                return res.json({
+                    error: err.message
+                });
             }
 
-            res.json({
-                id: this.lastID,
-                username: username.trim()
+            const userId = this.lastID;
+
+            const defaultTopics = [
+                "HTTP Grundlagen",
+                "REST API",
+                "SQL Grundlagen",
+                "JWT Authentication",
+                "CRUD Operations",
+                "MVC Architecture"
+            ];
+            defaultTopics.forEach(topic => {
+                db.run(
+                    "INSERT INTO topics (name, completed, user_id) VALUES (?, 0, ?)",
+                    [topic, userId]
+                );
             });
+            res.json({
+                message: "User created"
+            });
+        }
+    );
+});
+app.post("/login", async (req, res) => {
+
+    const {username, password} = req.body;
+
+    db.get(
+
+        "SELECT * FROM users WHERE username = ?",
+
+        [username],
+        async (err, user) => {
+
+            if (err) {
+                return res.status(500).json({
+                    error: "err.message"
+                });
+            }
+            if (!user){
+                return res.status(400).json({
+                    error:"User not found"
+                });
+            }
+            const validPassword = await bcrypt.compare( password, user.password);
+            if (!validPassword) {
+                return res.status(400).json({
+                    error: "Wrong password"
+                });
+            }
+            res.json({
+                message: "Login succses",
+                userId: user.id,
+                username: user.username
+            });
+        }
+    );
+});
+app.get("/topics/:userId", (req, res) =>{
+    const userId = req.params.userId;
+
+    if (!userId) {
+        return res.status(400).json({error: "No userId provided"});
+    }
+
+    db.all(
+        "SELECT * FROM topics WHERE user_id = ?",
+        [userId],
+        (err, rows) => {
+
+            if (err) {
+                return res.status(500).json({error: err.message});
+            }
+            res.json(rows);
         }
     );
 });

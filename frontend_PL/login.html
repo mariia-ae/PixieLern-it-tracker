@@ -9,24 +9,26 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body class="login-page">
-
         <div class="container">
             <div class="login-card">
                 <h1 class="logo">
                     <span class="logo-pixie">Pixie</span><span class="logo-lern">Lern</span>
                 </h1>
-                <h2>Backend Grundlagen Tracker</h2>
-                <form id="LoginForm">
+                <h2>Login</h2>
+                <form id="loginForm">
                     
                     <label>Username</label><br>
-                    <input type="text"><br><br>
+                    <input id="username" type="text" required><br><br>
 
                     <label>Password</label><br>
-                    <input type="password"><br><br>
+                    <input id="password" type="password" required><br><br>
 
-                <button>Login</button>
+                <button type="submit">Login</button>
+                <p id="result"></p>
                 </form>
+                <p id="error"></p>
             </div>
         </div>
+    <script src="js/login.js"></script>
     </body>
 </html>
