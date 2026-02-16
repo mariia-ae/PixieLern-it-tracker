@@ -43,7 +43,6 @@ dashboard.js
 
 css/
 style.css
-
 _________________________________________________________________
 ## Installation
 Respository klonen:
@@ -69,4 +68,7 @@ Angehende Fachinformatikerin für Anwendungsentwicklung
 
 GitHub:
 http://github.com/mariia-ae
+____________________________________________________________________
+## Screenshots
+###  Login
 
