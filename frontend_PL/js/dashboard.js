@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const checkbox = topicDiv.querySelector("input");
         checkbox.addEventListener("change", () => {
-            fetch(`http://localhost:3000/topics/${topic.id}`, {
+            fetch(`/topics/${topic.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newName = inputEdit.value.trim();
                 if (!newName) return;
 
-                fetch(`http://localhost:3000/topics/${topic.id}`, {
+                fetch(`/topics/${topic.id}`, {
                     method: "PUT",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({name: newName})
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!confirmed) return;
 
-            fetch(`http://localhost:3000/topics/${topic.id}`, {
+            fetch(`/topics/${topic.id}`, {
                 method: "DELETE"
             }).then(() => {
                 topicDiv.remove();
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadTopics() {
         const userId = localStorage.getItem("userId");
-        fetch(`http://localhost:3000/topics/${userId}`)
+        fetch(`/topics/${userId}`)
             .then(res => res.json())
             .then(data => {
                 topicsContainer.innerHTML = "";
