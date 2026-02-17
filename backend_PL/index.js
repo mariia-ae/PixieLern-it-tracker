@@ -8,7 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-const db = new sqlite3.Database("./database.db", (err) =>{
+const db = new sqlite3.Database(
+    path.join(__dirname, "database.db"), 
+    (err) =>{
     if (err) {
         console.error("Database connection error:", err.message);
     } else {
