@@ -2,7 +2,7 @@ async function register() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const res = await fetch("http://localhost:3000/register", {
+    const res = await fetch("/register", {
         method: "POST",
 
         headers: {

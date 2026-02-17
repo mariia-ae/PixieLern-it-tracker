@@ -4,7 +4,7 @@ form.addEventListener("submit", async function (e) {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const res = await fetch("http://localhost:3000/login", {
+    const res = await fetch("/login", {
         method: "POST",
 
         headers: {

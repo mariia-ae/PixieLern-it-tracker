@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!name) return;
 
-        fetch("http://localhost:3000/topics", {
+        fetch("/topics", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
