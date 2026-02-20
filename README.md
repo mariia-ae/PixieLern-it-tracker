@@ -3,6 +3,9 @@
 PixieLern is a Full-Stack Webanwendung zur Verfolgung des Lernfortschritts in IT-Themen.
 Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnisse in der Full-Stack-Entwicklung zu vertiefen.
 
+Live Demo:
+https://github.com/mariia-ae/PixieTech-fullstack
+_______________________________________________________________
 ## Funktionen
 - Benutzerregistrierung und Login
 - Passwort-Hashing mit bcrypt
@@ -14,18 +17,34 @@ Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnis
 - Kategorien (z.B. Frontend, Backend, General etc.)
 - Benutzerbezogene Datenspeicherung
 ______________________________________________________________
-## Verwendete Technologien
-### Frontend
+## Technologien
+Frontend
+
 - HTML
 - CSS
 - JavaScript (Vanilla)
 - LocalStorage
-### Backend
+
+Backend
+
 - Node.js
 - Express.js
 - SQLite3
 - bcrypt
 ________________________________________________________________
+## Architektur
+Frontend:
+- HTML
+- CSS
+- JavaScripz
+Backend:
+- Node.js
+- Exspress.js
+Datenbank:
+- SQLite
+Deployment:
+- Render
+_________________________________________________________________
 ## Projektstrukture
 backend_PL/
 index.js
@@ -64,7 +83,8 @@ Geplante Verbesserungen:
 __________________________________________________________________
 ## Autorin
 Mariia Chertkova
-Angehende Fachinformatikerin für Anwendungsentwicklung
+Diesed Projekt wurde von mir während meiner Umschulung zur 
+Fachinformatikerin für Anwendungsentwicklung entwickelt.
 
 GitHub:
 http://github.com/mariia-ae
