@@ -30,7 +30,7 @@ body {
     background-color: #6b5c8f;
     color: white;
     border: none;
-    padding: 6px 14px;
+    padding: 2px 14px;
     border-radius: 6px;
     cursor: pointer;
     transition: 0.2s ease;
@@ -145,9 +145,9 @@ body {
 }
 #newTopicInput {
     flex: 1;
-    height: 44px;
-    padding:  0 14px;
-    border-radius: 10px;
+    height: 20px;
+    padding:  0 12px;
+    border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 14px;
 }
@@ -155,12 +155,13 @@ body {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 0px 20px;
-    height: 44px;
+    height: 20px;
+    padding: 0 12px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    white-space: nowrap;
 }
 #addTopicBtn:hover {
     opacity: 0.9;
@@ -189,7 +190,7 @@ body {
 .topic-difficulty {
     margin-left: 10px;
     font-size: 12px;
-    padding: 3px 8px;
+    padding: 0px 8px;
     border-radius: 10px;
     color:white;
     font-weight: 500;
@@ -212,6 +213,7 @@ body {
     color: #444;
     font-weight: 500;
 }
+
 #result {
     margin-top: 10px;
     font-size: 14px;
@@ -242,45 +244,34 @@ body {
 }
 
 @media (max-width: 768px){
-    body {
-        padding: 10px;
+    .container {
+        margin: 20px auto;
+        padding: 0 10px;
     }
-    .container{
-        width: 100%;
-        padding: 15px;
+    .dashboard-card {
+        padding: 20px;
     }
-    h1, h2 {
-        font-size: 20px;
-    }
-    input, select {
-        width: 100%;
-        margin-bottom: 10px;
-        font-size: 16px;
-    }
-    button {
-        width: 100%;
-        font-size: 16px;
-        padding: 10px;
-    }
-    .topics-section{
-        width: 100%;
-    }
-    .topics-item {
+    .dashboard-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 5px;
-    }
-    .topic-actions {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
+        gap: 10px;
     }
     .logout-btn {
-        width: auto;
-        font-size: 14px;
+        align-self: flex-end;
     }
-    .add-topic-form {
-        display: flex;
+    .add-topic-section{
         flex-direction: column;
+        align-items: stretch;
+    }
+    #addTopicBtn {
+        width: 100%;
+    }
+    .topic-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    h1 {
+        font-size: 22px;
     }
 }
