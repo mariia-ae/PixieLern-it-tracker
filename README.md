@@ -4,7 +4,7 @@ PixieLern is a Full-Stack Webanwendung zur Verfolgung des Lernfortschritts in IT
 Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnisse in der Full-Stack-Entwicklung zu vertiefen.
 
 Live Demo:
-https://github.com/mariia-ae/PixieTech-fullstack
+https://pixielern-it-tracker-1.onrender.com/login.html
 
 ## Funktionen
 - Benutzerregistrierung und Login
