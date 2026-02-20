@@ -33,20 +33,16 @@ Backend
 - bcrypt
 
 ## Architektur
-Frontend:
-- HTML
-- CSS
-- JavaScripz
+Die Anwendung basiert auf einer klassischen Client-Server-Architektur.
+- Das Frontend (HTML, CSS, JavaScript) ist für die Benutzeroberfläche,
+  ind die Interaktion mit dem Benutzer verantwortlich.
   
-Backend:
-- Node.js
-- Exspress.js
+- Das Backend (Node.js mit Express.js) verarbeitet die Anfragen, verwaltet die
+  Benutzerregistrierung und Login sowie die Anwendungslogik.
   
-Datenbank:
-- SQLite
+- Die Daten werden in einer SQLite-Datenbank gespeichert unnd sind benutzerbezogen organisiert.
   
-Deployment:
-- Render
+- Die Kommunukation zwischen Frontend und Backend erfolgt über HTTP-Anfragen.
 
 ## Projektstrukture
 backend_PL/
