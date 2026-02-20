@@ -37,11 +37,14 @@ Frontend:
 - HTML
 - CSS
 - JavaScripz
+  
 Backend:
 - Node.js
 - Exspress.js
+  
 Datenbank:
 - SQLite
+  
 Deployment:
 - Render
 _________________________________________________________________
