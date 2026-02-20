@@ -5,7 +5,7 @@ Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnis
 
 Live Demo:
 https://github.com/mariia-ae/PixieTech-fullstack
-_______________________________________________________________
+
 ## Funktionen
 - Benutzerregistrierung und Login
 - Passwort-Hashing mit bcrypt
@@ -16,7 +16,7 @@ _______________________________________________________________
 - Schwierigkeitsstufen (easy, medium, hard)
 - Kategorien (z.B. Frontend, Backend, General etc.)
 - Benutzerbezogene Datenspeicherung
-______________________________________________________________
+
 ## Technologien
 Frontend
 
@@ -31,7 +31,7 @@ Backend
 - Express.js
 - SQLite3
 - bcrypt
-________________________________________________________________
+
 ## Architektur
 Frontend:
 - HTML
@@ -47,7 +47,7 @@ Datenbank:
   
 Deployment:
 - Render
-_________________________________________________________________
+
 ## Projektstrukture
 backend_PL/
 index.js
@@ -65,7 +65,7 @@ dashboard.js
 
 css/
 style.css
-_________________________________________________________________
+
 ## Installation
 Respository klonen:
 git clone http://github.com/mariia-ae/PixieLern-it-tracker.git
@@ -76,14 +76,14 @@ npm install
 node index.js
 # Frontend starten:
 frontend_PL/login.html öffnen
-__________________________________________________________________
+
 ## Projektstatus
 Das Projekt wird aktuell weiterentwickelt.
 Geplante Verbesserungen:
 - Deployment
 - Verbesserte Sicherheit
 - UI/UX Verbesserungen
-__________________________________________________________________
+
 ## Autorin
 Mariia Chertkova
 Diesed Projekt wurde von mir während meiner Umschulung zur 
@@ -91,7 +91,7 @@ Fachinformatikerin für Anwendungsentwicklung entwickelt.
 
 GitHub:
 http://github.com/mariia-ae
-____________________________________________________________________
+
 ## Screenshots
 ###  Login
 ![Login](screenshots/login.png)
