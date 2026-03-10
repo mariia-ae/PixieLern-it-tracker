@@ -1,6 +1,6 @@
 # PixieLern IT Tracker
 
-PixieLern is a Full-Stack Webanwendung zur Verfolgung des Lernfortschritts in IT-Themen.
+PixieLern ist a Full-Stack Webanwendung zur Verfolgung des Lernfortschritts in IT-Themen.
 Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnisse in der Full-Stack-Entwicklung zu vertiefen.
 
 Live Demo:
