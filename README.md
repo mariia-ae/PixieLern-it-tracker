@@ -66,7 +66,7 @@ style.css
 Respository klonen:
 git clone http://github.com/mariia-ae/PixieLern-it-tracker.git
 
-# Backend installieren und starten:
+## Backend installieren und starten:
 cd backend_PL
 npm install
 node index.js
