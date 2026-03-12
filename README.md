@@ -70,7 +70,8 @@ git clone http://github.com/mariia-ae/PixieLern-it-tracker.git
 cd backend_PL
 npm install
 node index.js
-# Frontend starten:
+
+## Frontend starten:
 frontend_PL/login.html öffnen
 
 ## Projektstatus
