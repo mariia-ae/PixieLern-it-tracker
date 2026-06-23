@@ -1,93 +1,64 @@
 # PixieLern IT Tracker
 
-PixieLern ist a Full-Stack Webanwendung zur Verfolgung des Lernfortschritts in IT-Themen.
-Dieses Projekt wurde als persönliches Lernprojekt entwickelt, um meine Kenntnisse in der Full-Stack-Entwicklung zu vertiefen.
+PixieLern is a full-stack web-application designed to help users track their progress while learning IT topics.
+The application provides user authentication, personalized dashboards, progress tracking and topic management features.
 
 Live Demo:
 https://pixielern-it-tracker-1.onrender.com/login.html
 
-## Funktionen
-- Benutzerregistrierung und Login
-- Passwort-Hashing mit bcrypt
-- Persönliches Dashboard für jeden Benutzer
-- Themen hinzufügen, bearbeiten und löschen
-- Themen als abgeschlossen markieren
-- Fortschrittsanzeige (Progress Bar)
-- Schwierigkeitsstufen (easy, medium, hard)
-- Kategorien (z.B. Frontend, Backend, General etc.)
-- Benutzerbezogene Datenspeicherung
+## futures 
+- User registration and authentication
+- Secure password hashing using bcrypt
+- Personalozed user dashboard
+- Create, edit and delete learning topics
+- Mark topics as completed
+- Progress tracking with visual progress indicators
+- Difficulty levels (Easy, Medium, Hard)
+- Topic categorization (Frontend, Backend, General, etc.)
+- User-specific data storage
 
-## Technologien
-Frontend
-
+## Tech Stack
+### Frontend
 - HTML
 - CSS
 - JavaScript (Vanilla)
-- LocalStorage
 
-Backend
-
+### Backend
 - Node.js
 - Express.js
+
+  ### Database
 - SQLite3
-- bcrypt
 
-## Architektur
-Die Anwendung basiert auf einer klassischen Client-Server-Architektur.
-- Das Frontend (HTML, CSS, JavaScript) ist für die Benutzeroberfläche,
-  ind die Interaktion mit dem Benutzer verantwortlich.
-  
-- Das Backend (Node.js mit Express.js) verarbeitet die Anfragen, verwaltet die
-  Benutzerregistrierung und Login sowie die Anwendungslogik.
-  
-- Die Daten werden in einer SQLite-Datenbank gespeichert unnd sind benutzerbezogen organisiert.
-  
-- Die Kommunukation zwischen Frontend und Backend erfolgt über HTTP-Anfragen.
+  ### Security
+- bcrypt password hashing
 
-## Projektstrukture
-backend_PL/
-index.js
-database.db
+## Archicture
+The application follows a classic client-server architecture.
+-  Frontend:  HTML, CSS and JavaScript provide the user interface.
+-  Backend: Node.js and Express.js handle business logic, authentication and data processing.
+-  Database: SQLite stores user accounts and learning data.
+-  Communication: Frontend and backend communicate through HTTP request.
 
-frontend_PL/
-login.html
-register.html
-dashboard.html
+## Projct Goal
+The goal of this project was to gain hands-on experience in full-stack web-development by building a complete learning managment application from scratch.
+The ptoject focuses on authentication. user-specific data managment, CRUD operations and backend development with Node.js and Express.
 
-js/
-login.js
-register.js
-dashboard.js
+## Future Improvements
+- JWT authentication
+- REST API refactoring
+- Docker containertization
+- Resposive mobile gesign
+- Advanced analytics dashboard
 
-css/
-style.css
+## Key Learning Outcomes
+- Authentication and authotization fundamentals
+- Password security using bcrypt
+- CRUD application development
+- Client-server communication
+- Database integration
+- Full-stack project deploment
 
-## Installation
-Respository klonen:
-git clone http://github.com/mariia-ae/PixieLern-it-tracker.git
-
-## Backend installieren und starten:
-cd backend_PL
-npm install
-node index.js
-
-## Frontend starten:
-frontend_PL/login.html öffnen
-
-## Projektstatus
-Das Projekt wird aktuell weiterentwickelt.
-Geplante Verbesserungen:
-- Deployment
-- Verbesserte Sicherheit
-- UI/UX Verbesserungen
-
-## Autorin
-Mariia Chertkova
-Diesed Projekt wurde von mir während meiner Umschulung zur 
-Fachinformatikerin für Anwendungsentwicklung entwickelt.
-
-GitHub:
-http://github.com/mariia-ae
 
 ## Screenshots
 ###  Login
