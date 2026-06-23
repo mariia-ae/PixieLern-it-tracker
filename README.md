@@ -40,7 +40,7 @@ The application follows a classic client-server architecture.
 -  Database: SQLite stores user accounts and learning data.
 -  Communication: Frontend and backend communicate through HTTP request.
 
-## Projct Goal
+## Project Goal
 The goal of this project was to gain hands-on experience in full-stack web-development by building a complete learning managment application from scratch.
 The ptoject focuses on authentication. user-specific data managment, CRUD operations and backend development with Node.js and Express.
 
