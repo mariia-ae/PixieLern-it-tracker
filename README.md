@@ -27,10 +27,10 @@ https://pixielern-it-tracker-1.onrender.com/login.html
 - Node.js
 - Express.js
 
-  ### Database
+### Database
 - SQLite3
 
-  ### Security
+### Security
 - bcrypt password hashing
 
 ## Archicture
